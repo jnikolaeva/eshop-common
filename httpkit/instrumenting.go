@@ -30,7 +30,7 @@ func NewMetricsHolder(counter metrics.Counter, latency metrics.Histogram) *Metri
 	}
 }
 
-func instrumentingMiddleware(next http.Handler, metrics *MetricsHolder, endpointName string) http.Handler {
+func InstrumentingMiddleware(next http.Handler, metrics *MetricsHolder, endpointName string) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		scw := &statusCodeWriter{w, http.StatusOK}
 
